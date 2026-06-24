@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import BlogImage from "./BlogImage";
+import BlogChart from "./BlogChart";
+import BlogExport from "./BlogExport";
 import { NavLink, useNavigate } from "react-router-dom";
 const BlogGrid = () => {
   const [posts, setPosts] = useState([]);
@@ -25,6 +27,19 @@ const BlogGrid = () => {
   }, []);
 
   return (
+<div className="w-full">
+
+    <BlogExport posts={posts} />
+
+
+
+    <div className="w-full bg-white pt-4" id="printable-blog-area">
+
+
+
+
+    <BlogChart posts={posts}/>
+
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto px-6 md:px-12 py-10 font-sans select-none box-border w-full items-stretch">
       {posts.map((post) => (
         <div key={post.id} className="w-full bg-white border border-gray-100 rounded-2xl p-5 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between box-border cursor-pointer group"
@@ -49,6 +64,8 @@ const BlogGrid = () => {
           </p>
         </div>
       ))}
+    </div>
+    </div>
     </div>
   );
 };
